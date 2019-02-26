@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="">
+    <script src=""></script>
+</head>
+
+<body>
+
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script>
+        var APP_ID = 'PSDkVqYC7y0RiCjuqoc2JrCp-gzGzoHsz';
+        var APP_KEY = 'LHTCvELn1NxD5ACGSb9qBCz0';
+
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+        //创建数据库
+        var TestObject = AV.Object.extend('Playlist');
+        //创建一条记录
+        var testObject = new TestObject();
+        //保存记录
+        testObject.save({
+            name:'test',
+            cover:'test',
+            creatorId:'test',
+            description:'test',
+            songs:['1','2']
+        }).then(function (object) {
+            
+        })
+    </script>
+</body>
+
+</html>
