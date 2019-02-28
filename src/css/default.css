@@ -29,10 +29,10 @@ input[type=text]{font: inherit;margin: 0 6px;padding: 2px 4px;border-radius: 4px
 .newsong{
     padding: 10px;
     text-align: center;
-    color: white;
     cursor: pointer;
-    background: rgb(223, 72, 72);
     height: 40px;
+    background: rgb(223, 72, 72);
+    color: white;
 }
 .songlist-container{
     flex-grow: 1;

@@ -87,7 +87,11 @@
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response); //正常的url不能用中文或其他日文等
                         var sourceLink = 'http://' + domain + "/" + encodeURIComponent(response.key);
-                        uploadStatus.textContent = sourceLink + ''
+                        window.eventHub.emit('upload',{
+                            key:response.key,
+                            link:sourceLink
+                        })
+                        uploadStatus.textContent = "上传完毕"
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时，处理相关的事情

@@ -14,7 +14,8 @@
             this.view = view
             this.model = model
             this.view.render()
-        }
+            
+        },
     }
     controller.init(view, model)
 }

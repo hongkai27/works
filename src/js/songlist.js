@@ -6,7 +6,7 @@
                     <li>
                         <ol>生僻字</ol>
                     </li>
-                    <li class="active">
+                    <li>
                         <ol>我的一个道姑朋友</ol>
                     </li>
                     <li>
@@ -19,6 +19,9 @@
         `,
         render() {
             $(this.el).html(this.template)
+        },
+        clearActive(){
+            $(this.el).find('.active').removeClass('active')
         }
     }
     let model = {}
@@ -27,6 +30,9 @@
             this.view = view
             this.model = model
             this.view.render()
+            window.eventHub.on('upload',()=>{
+                this.view.clearActive()
+            })
         }
     }
     controller.init(view, model)

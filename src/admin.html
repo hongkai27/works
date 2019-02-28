@@ -17,46 +17,21 @@
             <div id="songlist-container" class="songlist-container"></div>
             <div class="uploaderArea"></div>
         </aside>
-        <main class="active"></main>
+        <main></main>
     </div>
 
 
 
 
 
-
-    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
-    <script>
-        var APP_ID = 'PSDkVqYC7y0RiCjuqoc2JrCp-gzGzoHsz';
-        var APP_KEY = 'LHTCvELn1NxD5ACGSb9qBCz0';
-
-        AV.init({
-            appId: APP_ID,
-            appKey: APP_KEY
-        });
-        /*
-        //创建数据库
-        var TestObject = AV.Object.extend('Playlist');
-        //创建一条记录
-        var testObject = new TestObject();
-        //保存记录
-        testObject.save({
-            name:'test',
-            cover:'test',
-            creatorId:'test',
-            description:'test',
-            songs:['1','2']
-        }).then(function (object) {
-
-        })*/
-    </script>
-
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./js/initializers/av.js"></script>  
     <script src="../vendors/moxie.js"></script>
     <script src="../node_modules/plupload/js/plupload.min.js"></script>
     <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script>
     <script src="./js/event-hub.js"></script>
-    <script src="./js/songform-main.js"></script>
+    <script src="./js/songform.js"></script>
     <script src="./js/newsong.js"></script>
     <script src="./js/songlist.js"></script>\
     <script src="./js/uploaderArea.js"></script>

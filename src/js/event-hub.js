@@ -2,9 +2,9 @@ window.eventHub = {
     events:[],
     init(){},
     //触发
-    emit(eventname,data){
+    emit(eventname,data){//发布
         for(let key in this.events){
-            if(key === enevtname){
+            if(key === eventname){
                 let fnlist = this.events[key]
                 fnlist.map((fn)=>{
                     fn.call(undefined,data)
@@ -13,15 +13,11 @@ window.eventHub = {
         }
     },
     //监听
-    on(eventname,fn){
-        for(let key in events){
-            if(key === enevtname){
-                if(this.events[key] === undefined){
-                    this.events[key] = []
-                }
-                this.events[key].push(fn)
-            }
+    on(eventname,fn){//订阅
+        if(this.events[eventname]===undefined){
+            this.events[eventname] = []
         }
+        this.events[eventname].push(fn)
     },
     //结束
     off(){}
