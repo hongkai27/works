@@ -26,16 +26,18 @@ input[type=text]{font: inherit;margin: 0 6px;padding: 2px 4px;border-radius: 4px
 }
 
 /* aside */
-.songlogo{
+.newsong{
     padding: 10px;
     text-align: center;
     color: white;
-}
-.songlogo{
+    cursor: pointer;
     background: rgb(223, 72, 72);
+    height: 40px;
+}
+.songlist-container{
+    flex-grow: 1;
 }
 .songlist{
-    flex-grow: 1;
     text-align: left; 
     border-top: 1px solid #888;
 }
@@ -63,6 +65,7 @@ input[type=text]{font: inherit;margin: 0 6px;padding: 2px 4px;border-radius: 4px
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
 }
 /* main */
 main.active{background:rgb(231, 225, 225);}
