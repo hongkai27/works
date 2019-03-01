@@ -8,23 +8,32 @@
         `,
         render(data) {
             $(this.el).html(this.template)
-            let {songs} = data
+            let { songs } = data
             let lilist = songs.map((song) => {
-              let domli = $('<li></li>').text(song.name)
-              return domli
+                let domli = $('<li></li>').text(song.name)
+                return domli
             })
             $(this.el).find('ol').empty()
-            lilist.map((domli)=>{
+            lilist.map((domli) => {
                 $(this.el).find('ol').append(domli)
-            }) 
+            })
         },
-            clearActive() {
-                $(this.el).find('.active').removeClass('active')
-            }
+        clearActive() {
+            $(this.el).find('.active').removeClass('active')
         }
+    }
     let model = {
         data: {
-            songs: [ ]
+            songs: []
+        },
+        find(){
+            var query = new AV.Query('Song');
+            return query.find().then((songs) =>{
+                this.data.songs = songs.map((song)=>{
+                    return {id:song.id,...song.attributes}
+                })
+                return songs
+            });
         }
     }
     let controller = {
@@ -32,13 +41,12 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
-            
             window.eventHub.on('create', (songdata) => {
-              
                 this.model.data.songs.push(songdata)
-               
                 this.view.render(this.model.data)
-             
+            })
+            this.model.find().then(()=>{
+                this.view.render(this.model.data)
             })
         }
     }

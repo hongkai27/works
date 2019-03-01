@@ -80,7 +80,7 @@
                     data[string] = $(this.view.el).find(`[name='${string}']`).val()
                 })
                 this.model.create(data).then(()=>{
-                    
+                    uploadStatus.textContent = ""
                     this.view.reset()
                     
                     let string = JSON.stringify(this.model.data)
