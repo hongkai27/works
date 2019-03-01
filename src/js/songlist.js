@@ -3,35 +3,42 @@
         el: '.songlist-container',
         template: `
         <ol class="songlist">
-                    <li>
-                        <ol>生僻字</ol>
-                    </li>
-                    <li>
-                        <ol>我的一个道姑朋友</ol>
-                    </li>
-                    <li>
-                        <ol>烦恼歌</ol>
-                    </li>
-                    <li>
-                        <ol>探清水河</ol>
-                    </li>
-                </ol>
+                    
+        </ol>
         `,
-        render() {
+        render(data) {
             $(this.el).html(this.template)
+            let {songs} = data
+            let lilist = songs.map((song) => {
+              let domli = $('<li></li>').text(song.name)
+              return domli
+            })
+            $(this.el).find('ol').empty()
+            lilist.map((domli)=>{
+                $(this.el).find('ol').append(domli)
+            }) 
         },
-        clearActive(){
-            $(this.el).find('.active').removeClass('active')
+            clearActive() {
+                $(this.el).find('.active').removeClass('active')
+            }
+        }
+    let model = {
+        data: {
+            songs: [ ]
         }
     }
-    let model = {}
     let controller = {
         init(view, model) {
             this.view = view
             this.model = model
-            this.view.render()
-            window.eventHub.on('upload',()=>{
-                this.view.clearActive()
+            this.view.render(this.model.data)
+            
+            window.eventHub.on('create', (songdata) => {
+              
+                this.model.data.songs.push(songdata)
+               
+                this.view.render(this.model.data)
+             
             })
         }
     }
