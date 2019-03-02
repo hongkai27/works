@@ -4,7 +4,7 @@
         template: `
         <div id="pick">
                     <div id="pickfiles" class="pickfiles">
-                        <p>点击或拖曳文件</p>
+                        <p>新建歌曲请点击或拖曳文件</p>
                         <p>文件大小不能超过 40MB</p>
                     </div>
                 </div>
@@ -92,6 +92,7 @@
                             url:sourceLink
                         })
                         uploadStatus.textContent = "上传完毕"
+                        
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时，处理相关的事情

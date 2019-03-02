@@ -23,6 +23,7 @@ input[type=text]{font: inherit;margin: 0 6px;padding: 2px 4px;border-radius: 4px
 .page main{
     flex-grow: 1;
     padding: 10px 0;
+    background:white;
 }
 
 /* aside */
@@ -92,3 +93,7 @@ main h1{font-size: 16px;}
     padding-right: 10px;
     margin-left: calc(4em + 2px);
 }
+.songform button.down{
+    display:none;
+}
+
