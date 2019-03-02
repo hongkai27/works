@@ -20,6 +20,11 @@
         },
         clearActive() {
             $(this.el).find('.active').removeClass('active')
+        },
+        clickColor(e){
+            let li = $(e)
+            li.addClass('active').siblings('.active').removeClass('active')
+            $('.main').addClass('active')
         }
     }
     let model = {
@@ -33,7 +38,7 @@
                     return {id:song.id,...song.attributes}
                 })
                 return songs
-            });
+            })
         }
     }
     let controller = {
@@ -41,11 +46,22 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
-            window.eventHub.on('create', (songdata) => {
+            this.bindeventHub()
+            this.bindevents()
+        },
+        bindevents(){
+            $(this.view.el).on('click','li',(e)=>{
+                console.log('--//--//--//--')
+                console.log(e.currentTarget)
+                this.view.clickColor(e.currentTarget)
+            })
+        },
+        bindeventHub(){
+            window.eventHub.on('create', (songdata) => {//主要是用来提交时立刻显示在歌单列表中
                 this.model.data.songs.push(songdata)
                 this.view.render(this.model.data)
             })
-            this.model.find().then(()=>{
+            this.model.find().then(()=>{//从leancloud数据库中读取数据再渲染页面
                 this.view.render(this.model.data)
             })
         }
