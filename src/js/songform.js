@@ -21,9 +21,37 @@
                 </div>
             </form>
         `,
+        template1: `
+        <h1>歌曲信息</h1>
+            <form class="songform">
+                <div class="row">
+                    <label>歌名</label>
+                    <input name="name" type="text" value="__name__">
+                </div>
+                <div class="row">
+                    <label>歌手</label>
+                    <input name="singer" type="text" value="__singer__">
+                </div>
+                <div class="row">
+                    <label>外链</label>
+                    <input name="url" type="text" value="__url__">
+                </div>
+                <div class="row">
+                    <button type="submit">保存</button>
+                </div>
+            </form>
+        `,
         render(data = {}) {//没有参数data就为空对象
             let placeholder = ['name', 'singer','url','id']
             let html = this.template
+            placeholder.map((string) => { //data是emit执行时我们自己写的数据
+                html = html.replace(`__${string}__`, data[string] || '') //placeholder为空的话就默认为空字符串
+            })
+            $(this.el).html(html)
+        },
+        render1(data = {}) {//没有参数data就为空对象
+            let placeholder = ['name', 'singer','url','id']
+            let html = this.template1
             placeholder.map((string) => { //data是emit执行时我们自己写的数据
                 html = html.replace(`__${string}__`, data[string] || '') //placeholder为空的话就默认为空字符串
             })
@@ -70,6 +98,10 @@
                 this.view.render(data)//上传完毕后重新初始化页面，填充内容
             })
             this.bindEvents()
+            window.eventHub.on('select',(data)=>{
+                this.model.data = data
+                this.view.render1(this.model.data)
+            })
         },
         bindEvents() {//获取上传完毕后填充的内容
             $(this.view.el).on('submit', 'form', (e) => {

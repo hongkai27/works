@@ -33,6 +33,7 @@ input[type=text]{font: inherit;margin: 0 6px;padding: 2px 4px;border-radius: 4px
     height: 40px;
     background: rgb(223, 72, 72);
     color: white;
+    font-size: 16px;
 }
 .songlist-container{
     flex-grow: 1;

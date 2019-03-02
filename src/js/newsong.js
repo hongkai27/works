@@ -2,7 +2,7 @@
     let view = {
         el: '.newsong',
         template: `
-        点击新建歌曲
+        音悦台
         `,
         render() {
             $(this.el).html(this.template)

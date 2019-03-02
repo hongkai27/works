@@ -10,7 +10,7 @@
             $(this.el).html(this.template)
             let { songs } = data
             let lilist = songs.map((song) => {
-                let domli = $('<li></li>').text(song.name)
+                let domli = $('<li></li>').text(song.name).attr('songdata-id',song.id)
                 return domli
             })
             $(this.el).find('ol').empty()
@@ -45,17 +45,24 @@
         init(view, model) {
             this.view = view
             this.model = model
-            this.view.render(this.model.data)
+            //this.view.render(this.model.data)
             this.bindeventHub()
             this.bindevents()
         },
         bindevents(){
             $(this.view.el).on('click','li',(e)=>{
-                console.log('--//--//--//--')
-                console.log(e.currentTarget)
                 this.view.clickColor(e.currentTarget)
-            })
-        },
+                let songid = e.currentTarget.getAttribute('songdata-id')
+                let data
+                let songs = this.model.data.songs
+                for(let i=0;i<songs.length;i++){
+                    if(songid===songs[i].id){
+                        data = songs[i]
+                    }
+                }
+                window.eventHub.emit('select',JSON.parse(JSON.stringify(data)))
+        })
+    },
         bindeventHub(){
             window.eventHub.on('create', (songdata) => {//主要是用来提交时立刻显示在歌单列表中
                 this.model.data.songs.push(songdata)
