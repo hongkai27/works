@@ -5,7 +5,7 @@
         <div id="pick">
                     <div id="pickfiles" class="pickfiles">
                         <p>新建歌曲请点击或拖曳文件</p>
-                        <p>文件大小不能超过 40MB</p>
+                        <p>文件大小不能超过 16MB</p>
                     </div>
                 </div>
                 <div id="uploadStatus" class="uploadStatus"></div>
@@ -45,7 +45,7 @@
                 // save_key: true,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
                 domain: 'http://pnke3a8ws.bkt.clouddn.com', // bucket域名，下载资源时用到，必需
                 //container: this.view.find('pick'), // 上传区域DOM ID，默认是browser_button的父元素
-                max_file_size: '40mb', // 最大文件体积限制
+                max_file_size: '16mb', // 最大文件体积限制
                 dragdrop: true, // 开启可拖曳上传
                 drop_element: this.view.find('.pickfiles'), // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
 

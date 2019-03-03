@@ -2,15 +2,14 @@
     let view = {
         el: '.songlist-container',
         template: `
-        <ol class="songlist">
-                    
+        <ol class="songlist">      
         </ol>
         `,
         render(data) {
             $(this.el).html(this.template)
             let {songs} = data
             let lilist = songs.map((song) => {
-                let domli = $('<li></li>').text(`${song.name +'     '+ song.singer}`).attr('songdata-id', song.id)
+                let domli = $('<li></li>').text(song.name).attr('songdata-id', song.id)
                 return domli
             })
             $(this.el).find('ol').empty()
@@ -33,8 +32,7 @@
         },
         find() {
             var query = new AV.Query('Song');
-            return query.find()
-            .then((songs) => {
+            return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
                     return {
                         id: song.id,
@@ -55,8 +53,10 @@
         },
         bindeventHub(){
             window.eventHub.on('create', (songdata) => {//主要是用来提交时立刻显示在歌单列表中
+                
                 this.model.data.songs.push(songdata)
                 this.view.render(this.model.data)
+                
             })
             this.model.find().then(()=>{//从leancloud数据库中读取数据再渲染页面
                 this.view.render(this.model.data)

@@ -55,8 +55,10 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url)
+            song.set('id',song.id)
             //保存
             return song.save().then((newsong) => {
+                
                 let {id,attributes} = newsong //attributes是打印出来看到里面存在的
                 Object.assign(this.data, //assign会深拷贝源文件地址
                     {id,...attributes}) //attributes里面有什么，就在这里生成赋值什么，等于下面三句话
@@ -64,7 +66,8 @@
                 singer:attributes.singer,
                 url:attributes.url,
                 id:id*/
-            }, (error) => {});
+      
+            });
         }
     }
     let controller = {
@@ -83,10 +86,10 @@
             })
 
         },
-        create() {
+        save() {
             let need = 'name singer url'.split(' ')
-            let data = {}
-            need.map((string) => {
+                let data = {}
+                need.map((string) => {
                 data[string] = $(this.view.el).find(`[name='${string}']`).val()
             })
             this.model.create(data).then(() => {
@@ -98,13 +101,10 @@
             })
         },
         bindEvents() { 
-            $(this.view.el).on('submit', 'form', (e) => {
+            $(this.view.el).on('submit', 'form', (e) => { 
                 e.preventDefault()
-                if (this.model.data.id) {//?????
-
-                } else {
-                    this.create()
-                }
+                this.save()
+                
                 $('main').removeClass('active')
 
             })
