@@ -2,7 +2,7 @@
     let view = {
         el: '.songlist-container',
         template: `
-        <div class="listtitle">歌单列表</div>
+        <div class="listtitle"><a href="./index.html" target="_blank">点击进入歌单</a></div>
         <ol class="songlist">      
         </ol>
         `,
