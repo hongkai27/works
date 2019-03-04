@@ -3,12 +3,12 @@
         el: '.uploaderArea',
         template: `
         <div id="pick">
-                    <div id="pickfiles" class="pickfiles">
-                        <p>新建歌曲请点击或拖曳文件</p>
-                        <p>文件大小不能超过 16MB</p>
-                    </div>
-                </div>
-                <div id="uploadStatus" class="uploadStatus"></div>
+            <div id="pickfiles" class="pickfiles">
+                <p>新建歌曲请点击或拖曳文件</p>
+                <p>文件大小不能超过 16MB</p>
+            </div>
+        </div>
+        <div id="uploadStatus" class="uploadStatus"></div>
         `,
         render() {
             $(this.el).html(this.template)
@@ -94,8 +94,7 @@
                             name:response.key,
                             url:sourceLink
                         })
-                        uploadStatus.textContent = "上传完毕"
-                        
+                        uploadStatus.textContent = ""
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时，处理相关的事情

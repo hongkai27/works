@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.page > main',
+        el: '.page >aside> main',
         template: `
             <form class="songform">
                 <div class="row">

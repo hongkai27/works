@@ -2,7 +2,8 @@
     let view = {
         el: '.newsong',
         template: `
-        音悦台
+        <div class ="logo">YinYueTai.com</div>
+        <div class="uploaderArea"></div>
         `,
         render() {
             $(this.el).html(this.template)

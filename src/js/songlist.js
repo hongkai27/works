@@ -2,6 +2,7 @@
     let view = {
         el: '.songlist-container',
         template: `
+        <div class="listtitle">歌单列表</div>
         <ol class="songlist">      
         </ol>
         `,
