@@ -71,10 +71,12 @@
                     },
                     'BeforeUpload': function (up, file) {
                         // 每个文件上传前，处理相关的事情
+                        window.eventHub.emit('beforeloading')
                     },
                     'UploadProgress': function (up, file) {
                         // 每个文件上传时，处理相关的事情
                         uploadStatus.textContent = "上传中"
+                        
                     },
                     'FileUploaded': function (up, file, info) {
                         // 每个文件上传成功后，处理相关的事情
@@ -84,6 +86,7 @@
                         //    "key": "gogopher.jpg"
                         //  }
                         // 查看简单反馈
+                        window.eventHub.emit('afterloading')
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response); //正常的url不能用中文或其他日文等
                         var sourceLink = 'http://' + domain + "/" + encodeURIComponent(response.key);
