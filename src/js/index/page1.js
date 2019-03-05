@@ -1,7 +1,6 @@
 {
     let view = {
         el:'.page-1',
-        template:``,
         show(){
             $(this.el).addClass('active')
         },

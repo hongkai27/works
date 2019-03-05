@@ -74,19 +74,16 @@ section.topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #D43C33;
+    background: rgb(38, 42, 51);
     padding: 17px 10px;
 }
-
-section.topbar .logo>svg {
-    width: 142px;
-    height: 25px;
-    vertical-align: top;
-
+section.topbar .logo{
+    margin-left: 20px;
+    font-size: 20px;
+    color: rgb(39, 213, 191);
 }
-
 section.topbar>a {
-    color: white;
+    color: rgb(39, 213, 191);
     display: inline-block;
     padding: 5px 11px;
     line-height: 20px;
@@ -130,9 +127,6 @@ section.topbar>a::after {
 .tabs-nav>li.active {
     color: #D43C33;
 }
-
-.tabs-nav>li.active>.text {}
-
 .tabs-nav>li.active>.text::after {
     content: '';
     position: absolute;
@@ -142,11 +136,9 @@ section.topbar>a::after {
     left: 0;
     width: 100%;
 }
-
 .tab-content {
     margin-top: 105px;
 }
-
 .tab-content>li {
     display: none;
 }
@@ -164,9 +156,6 @@ section.topbar>a::after {
     content: '';
     display: table;
 }
-
-section.playlists {}
-
 section.playlists>ol.songs {
     display: flex;
     flex-wrap: wrap;
@@ -192,9 +181,9 @@ section.playlists>ol.songs>li p {
 section.playlists>ol.songs>li img {
     width: 100%;
 }
-
-section.songs {}
-
+section.songs{
+    height: 482px;
+}
 section.songs>.list {
     margin-top: 18px;
 }
@@ -254,7 +243,7 @@ section.art .link-wrapper>a {
     font-size: 16px;
     padding: 0 19px;
     border-radius: 20px;
-    color: #D43C33;
+    color: rgb(39, 213, 191);
     margin-top: 10px;
     margin-bottom: 5px;
 }
