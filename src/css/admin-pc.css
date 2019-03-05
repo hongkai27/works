@@ -138,9 +138,6 @@ input[type=text] {
     background:  rgb(38, 42, 51);
     color:white;
 }
-main.active {
-    background: rgb(38, 42, 51);
-}
 
 main h1 {
     width: 500px;

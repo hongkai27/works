@@ -22,32 +22,33 @@ var server = http.createServer(function (request, response) {
 
     console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
 
-    if (path === '/uptoken') {
+    if(path==='/uptoken'){
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/json;charset=utf-8')
         response.setHeader('Access-Control-Allow-Origin', '*')
         response.removeHeader('Date')
+    
         var config = fs.readFileSync('./qiniu-key.json')
         config = JSON.parse(config)
-        var { accessKey, secretKey } = config;
+    
+        let {accessKey, secretKey} = config;
         var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
         var options = {
-            scope: "163-music-1",
+          scope: '163-music-1',
         };
         var putPolicy = new qiniu.rs.PutPolicy(options);
-        var uploadToken = putPolicy.uploadToken(mac);
-
+        var uploadToken=putPolicy.uploadToken(mac);
         response.write(`
-    {
-      "uptoken":"${uploadToken}"
-    }
-    `)
+        {
+          "uptoken": "${uploadToken}"
+        }
+        `)
         response.end()
-    } else {
+      }else{
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
         response.end()
-    }
+      }
 
     /******** 代码结束，下面不要看 ************/
 })

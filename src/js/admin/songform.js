@@ -104,9 +104,6 @@
             $(this.view.el).on('submit', 'form', (e) => { 
                 e.preventDefault()
                 this.save()
-                
-                $('main').removeClass('active')
-
             })
         }
     }
