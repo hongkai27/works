@@ -51,16 +51,17 @@
             //this.view.render(this.model.data)
             this.bindeventHub()
             this.bindevents()
+            this.model.find().then(()=>{//从leancloud数据库中读取数据再渲染页面
+                this.view.render(this.model.data)
+            })
         },
         bindeventHub(){
             window.eventHub.on('create', (songdata) => {//主要是用来提交时立刻显示在歌单列表中
-                
                 this.model.data.songs.push(songdata)
                 this.view.render(this.model.data)
-                
-            })
-            this.model.find().then(()=>{//从leancloud数据库中读取数据再渲染页面
-                this.view.render(this.model.data)
+                this.model.find().then(()=>{//从leancloud数据库中读取数据再渲染页面
+                    this.view.render(this.model.data)
+                })
             })
         },
         bindevents() {
@@ -73,8 +74,11 @@
                     if (songid === songs[i].id) {
                         data = songs[i]
                     }
+                    
                 }
-                window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
+                let string = JSON.stringify(data)
+                let object = JSON.parse(string)
+                window.eventHub.emit('select', object)
             })
         } 
     }

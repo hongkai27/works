@@ -90,8 +90,7 @@
                         var domain = up.getOption('domain')
                         var response = JSON.parse(info.response)//正常的url不能用中文或其他日文等
                         var sourceLink = 'http://'+domain + '/' + encodeURIComponent(response.key)
-                        console.log('response.key')
-                        console.log(response.key)
+                        
                         window.eventHub.emit('upload',{
                             name:response.key,
                             url:sourceLink
@@ -104,15 +103,13 @@
                     'UploadComplete': function () {
                         //队列文件处理完毕后，处理相关的事情
                     },
-                    /*'Key': function (up, file) {
-                        console.log('file')
-                        console.log(file)
+                    'Key': function (up, file) {
                         // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
                         // 该配置必须要在unique_names: false，save_key: false时才生效
                         var key = file.name;
                         // do something with key here
                         return key
-                    }*/
+                    }
                 }
             });
         }
