@@ -6,18 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>歌曲播放</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable = no,maximum-scale=1.0,minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="screen" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/song.css">
 
 </head>
+
 <body>
-    <div class="app" id="app"></div>
 
+    <div class="page" id="app">
+            <audio src="#"></audio>
+            <div class="disc-container">
+                <img class="pointer" src="../pointer.png" alt="">
+                <div class="disc">
+                    <div class="icon-wrapper">
+                        <svg class="icon icon-play">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                        <div class="icon icon-pause">
+                            暂
+                        </div>
+                    </div>
+                    <img class="ring" src="../dist.png" alt="">
+                    <img class="light" src="../dist-light.png" alt="">
+                    <img src=""
+                        alt="" class="cover">
+                </div>
+            </div>
+            <div class="song-description">
+                <h1></h1>
+                <div class="lyric">
+                    <div class="lines">
 
-
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
-<script src="./js/admin/initializers/av.js"></script>
-<script src="./js/admin/event-hub.js"></script>
-<script src="./js/song/song.js"></script>
+                    </div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="#">打开</a>
+                <a class="main" href="#">下载</a>
+            </div>
+        
+        </div>
+        <script src="//at.alicdn.com/t/font_395875_4hwrep7mypx8ncdi.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+        <script src="./js/admin/initializers/av.js"></script>
+        <script src="./js/admin/event-hub.js"></script>
+        <script src="./js/song/song.js"></script>
+        
 </body>
+
 </html>

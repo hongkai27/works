@@ -4,16 +4,20 @@
         template: `
             <form class="songform">
                 <div class="row">
-                    <label>歌名</label>
+                    <label>歌曲名称</label>
                     <input name="name" type="text" value="__name__">
                 </div>
                 <div class="row">
-                    <label>歌手</label>
+                    <label>歌手名称</label>
                     <input name="singer" type="text" value="__singer__">
                 </div>
                 <div class="row">
-                    <label>外链</label>
+                    <label>歌曲外链</label>
                     <input name="url" type="text" value="__url__">
+                </div>
+                <div class="row">
+                    <label>封面链接</label>
+                    <input name="cover" type="text" value="__cover__">
                 </div>
                 <div class="row">
                     <button type="submit">保存</button>
@@ -21,7 +25,7 @@
             </form>
         `,
         render(data = {}) { //没有参数data就为空对象
-            let placeholder = ['name', 'singer', 'url', 'id']
+            let placeholder = ['name', 'singer', 'url', 'id','cover']
             let html = this.template
             placeholder.map((string) => { //data是emit执行时我们自己写的数据
                 html = html.replace(`__${string}__`, data[string] || '') //placeholder为空的话就默认为空字符串
@@ -44,7 +48,8 @@
             name: '',
             singer: '',
             url: '',
-            id: ''
+            id: '',
+            cover:''
         },
         create(data) {
             // 声明一个对象
@@ -55,7 +60,8 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url)
-            song.set('id',song.id)
+            song.set('id',data.id)
+            song.set('cover',data.cover)
             //保存
             return song.save().then((newsong) => {
                 
@@ -87,7 +93,7 @@
 
         },
         save() {
-            let need = 'name singer url'.split(' ')
+            let need = 'name singer url cover'.split(' ')
                 let data = {}
                 need.map((string) => {
                 data[string] = $(this.view.el).find(`[name='${string}']`).val()
