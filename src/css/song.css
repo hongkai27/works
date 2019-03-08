@@ -47,7 +47,7 @@
 	margin-top: 20px;
 }
 .song-description h1{
-	color: white;
+	color: rgb(4, 64, 66);
 	font-size: 18px;
 }
 .song-description p{
@@ -56,9 +56,10 @@
 }
 .song-description .lines{
 	transition: transform 0.3s;
+	color:rgb(104, 100, 100);
 }
 .song-description .lyric{
-	height: 72px;
+	height: 200px;
 	overflow: hidden;
 }
 .song-description p.active{

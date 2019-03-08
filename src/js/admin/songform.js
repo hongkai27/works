@@ -20,12 +20,16 @@
                     <input name="cover" type="text" value="__cover__">
                 </div>
                 <div class="row">
+                    <label>歌词</label>
+                    <textarea name="lyrics" cols=100 rows=10>__lyrics__</textarea>
+                </div>
+                <div class="row">
                     <button type="submit">保存</button>
                 </div>
             </form>
         `,
         render(data = {}) { //没有参数data就为空对象
-            let placeholder = ['name', 'singer', 'url', 'id','cover']
+            let placeholder = ['name', 'singer', 'url', 'id','cover','lyrics']
             let html = this.template
             placeholder.map((string) => { //data是emit执行时我们自己写的数据
                 html = html.replace(`__${string}__`, data[string] || '') //placeholder为空的话就默认为空字符串
@@ -49,7 +53,8 @@
             singer: '',
             url: '',
             id: '',
-            cover:''
+            cover:'',
+            lyrics:''
         },
         create(data) {
             // 声明一个对象
@@ -62,6 +67,7 @@
             song.set('url', data.url)
             song.set('id',data.id)
             song.set('cover',data.cover)
+            song.set('lyrics',data.lyrics)
             //保存
             return song.save().then((newsong) => {
                 
@@ -93,7 +99,7 @@
 
         },
         save() {
-            let need = 'name singer url cover'.split(' ')
+            let need = 'name singer url cover lyrics'.split(' ')
                 let data = {}
                 need.map((string) => {
                 data[string] = $(this.view.el).find(`[name='${string}']`).val()

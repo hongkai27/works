@@ -7,6 +7,13 @@
             }) //根据保存的背景图地址更换背景图
             $('img.cover').attr('src', data.cover)
             $(this.el).find('audio').attr('src', data.url)
+            $(this.el).find('.song-description>h1').text(data.name)
+            
+            data.lyrics.split('\n').map((string)=>{
+                let p = document.createElement('p')//将歌词分成多行p
+                p.textContent = string
+                $(this.el).find('.lyric>.lines').append(p)
+            })
         },
         play() {
             $(this.el).find('audio')[0].play()
@@ -25,7 +32,8 @@
             singer: '',
             url: '',
             cover: '',
-            status: 'paused'
+            status: 'paused',
+            lyrics:''
         },
         idgetsong(id) {
             var query = new AV.Query('Song');
@@ -38,7 +46,7 @@
                 )
                 return song
             });
-        }
+        },
     }
     let controller = {
         init(view, model) {
